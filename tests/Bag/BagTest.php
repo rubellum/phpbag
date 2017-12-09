@@ -1,9 +1,7 @@
 <?php
 
-namespace Tests\Bag;
-
-use PHPUnit\Framework\TestCase;
 use Bag\Bag;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class BagTest
@@ -15,7 +13,27 @@ class BagTest extends TestCase
     /**
      * @test
      */
-    public function test_get_value_from_bag()
+    public function BagReturnsAllValues()
+    {
+        $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
+
+        $this->assertEquals(['aaa' => 'bbb', 'ccc' => 'ddd'], $bag->all());
+    }
+
+    /**
+     * @test
+     */
+    public function BagReturnsAllKeys()
+    {
+        $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
+
+        $this->assertEquals(['aaa', 'ccc'], $bag->keys());
+    }
+
+    /**
+     * @test
+     */
+    public function BagReturnsValueByKey()
     {
         $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
 
@@ -26,7 +44,7 @@ class BagTest extends TestCase
     /**
      * @test
      */
-    public function test_no_key_get_null()
+    public function BagReturnsNullIfHasNoKey()
     {
         $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
 
@@ -36,27 +54,7 @@ class BagTest extends TestCase
     /**
      * @test
      */
-    public function test_all_method_return_all_values()
-    {
-        $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
-
-        $this->assertEquals(['aaa' => 'bbb', 'ccc' => 'ddd'], $bag->all());
-    }
-
-    /**
-     * @test
-     */
-    public function test_keys_method_return_all_keys()
-    {
-        $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
-
-        $this->assertEquals(['aaa', 'ccc'], $bag->keys());
-    }
-
-    /**
-     * @test
-     */
-    public function test_has_method_return_all_values()
+    public function BagReturnsKeyExists()
     {
         $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
 
@@ -67,12 +65,13 @@ class BagTest extends TestCase
     /**
      * @test
      */
-    public function test_remove_key()
+    public function BagRemoveValueByKey()
     {
         $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
 
         $bag->remove('ccc');
 
+        $this->assertFalse($bag->has('ccc'));
         $this->assertNull($bag->get('ccc'));
         $this->assertEquals(['aaa' => 'bbb'], $bag->all());
     }
@@ -80,7 +79,7 @@ class BagTest extends TestCase
     /**
      * @test
      */
-    public function test_clear_method_remove_all_values()
+    public function BagRemoveAllValues()
     {
         $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
 
@@ -94,7 +93,7 @@ class BagTest extends TestCase
     /**
      * @test
      */
-    public function test_set_value()
+    public function BagAddValue()
     {
         $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
 
@@ -108,7 +107,7 @@ class BagTest extends TestCase
     /**
      * @test
      */
-    public function test_merge_method_overwrite_values_if_same_key_has()
+    public function BagMergesValuesThenOverwriteValueIfKeyExists()
     {
         $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
 
@@ -123,7 +122,7 @@ class BagTest extends TestCase
     /**
      * @test
      */
-    public function test_count_method()
+    public function BagReturnsCountValues()
     {
         $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
 
@@ -134,7 +133,7 @@ class BagTest extends TestCase
     /**
      * @test
      */
-    public function test_bag_array_access()
+    public function BagReturnValueByArrayAccess()
     {
         $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
 
@@ -156,7 +155,7 @@ class BagTest extends TestCase
     /**
      * @test
      */
-    public function test_bag_property_access()
+    public function BagReturnValueByPropertyAccess()
     {
         $bag = new Bag(['aaa' => 'bbb', 'ccc' => 'ddd']);
 
