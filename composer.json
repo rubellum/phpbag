@@ -1,5 +1,6 @@
 {
   "name": "rubellum/phpbag",
+  "description": "phpbag is a container for key/value pairs.",
   "authors": [
     {
       "name": "Hiroaki Matsuura",
