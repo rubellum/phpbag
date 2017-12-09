@@ -13,7 +13,7 @@ Via [Composer](https://getcomposer.org/)
 $ composer require rubellum/phpbag
 ```
 
-Requires PHP 7.0 or newer.
+Requires PHP 5.5 or newer.
 
 ## Usage
 
