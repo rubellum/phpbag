@@ -12,15 +12,10 @@
       "": "src/"
     }
   },
-  "autoload-dev": {
-    "psr-4": {
-      "Tests\\": "tests/"
-    }
-  },
   "require": {
-    "php": ">=7.0"
+    "php": ">=5.5"
   },
   "require-dev": {
-    "phpunit/phpunit": "^6"
+    "phpunit/phpunit": "^4.8.35 || ^5.0"
   }
 }
